@@ -26,11 +26,13 @@ namespace FormDll
         [DllImport("CppDll.dll")]
         public static extern int seqGen_factSeq(IntPtr seqPtr);
 
-        IntPtr seqPtr = seqGen_Create();
+        IntPtr seqPtr;
 
         public Form1()
         {
             InitializeComponent();
+
+            seqPtr = seqGen_Create();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,7 +52,12 @@ namespace FormDll
             FibSeqLabel.Text = fib.ToString();
 
             fact = seqGen_factSeq(seqPtr);
-            FactorialSeqLabel.Text = fact.ToString(); 
+            FactorialSeqLabel.Text = fact.ToString();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            seqGen_Delete(seqPtr);
         }
     }
 }
