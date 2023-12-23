@@ -1,3 +1,3 @@
-# FormDLL
+# FormDll
 
-This is a C# forms app created to use functions from a dll written in C++.
+A forms app (C#) that imports from a dll (C++).
